@@ -16,9 +16,9 @@ $ python add_markers.py -w foo.wav -l foo.txt -o mg4.wav
 
 I made this to dump wave files with cues to the [Make Noise Morphagene](http://makenoisemusic.com/modules/morphagene). It works for me, but it's not perfect....
 
-- Wave chunks present in the source file aren't all recognized by the wave library I'm using and therefore don't make it in the final output file.
-- Generated wave file sounds distorted. It plays fine on my modular, but my computer plays the file poorly. This could be due to discarded wave file chunks (as mentioned earlier) that don't make it in the generated audio file, or due to some other aspect of how the file is rewritten through the wave library.
-- I have seen a few splices not make it out and I'm not sure why. Seems like it might be related to audio files that were too big for Morphagene, but this needs more testing.
+- Some parts of the wave file aren't included in the output wave file. The WAV format includes varied chunk names and unrecognized chunks are discarded. 
+- Generated wave file sounds distorted on a computer. It plays fine on my modular, but macOS plays the file poorly. This could be due to discarded wave file chunks (as mentioned earlier) that don't make it in the generated audio file, or due to some other aspect of how the file is rewritten through the wave library. Morphagene reads them OK, though.
+- I have seen a few splices not make it out and I'm not sure why. Seems like it might be related to audio files that were too big for Morphagene, but this needs more testing. The splices that are lost seem to always be the at the end.
 
 ## Credit to others
 I'm taking advantage of a repo from the github user josephernest's modifications to the scipy/io library for wave files. The only changes I made was to add support for python3.
