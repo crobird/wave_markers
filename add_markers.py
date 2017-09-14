@@ -19,9 +19,12 @@ def get_wave_labels(bitrate, labelfile):
 		for line in fh:
 			if not line.strip():
 				continue
-			(start, end, label) = line.strip().split("\t")
+			start, end, *label = line.strip().split("\t")
 			position = floor(bitrate * float(start))
-			labelfile_data.append({"position": position, "label": label})
+			if label:
+				labelfile_data.append({"position": position, "label": label[0]})
+			else:
+				labelfile_data.append(position)
 	return labelfile_data
 
 
