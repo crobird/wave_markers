@@ -1,5 +1,5 @@
 # wave_markers
-Python3 script to add cue markers to a wave file
+Python3 script to add cue markers to a wave file. 
 
 ## Usage
 
@@ -11,6 +11,45 @@ Python3 script to add cue markers to a wave file
 ```
 $ python add_markers.py -w foo.wav -l foo.txt -o mg4.wav
 ``` 
+
+## Dump marker info
+
+You can run the `dump_wav.py` script to see that markers in a file (when using the right options).
+
+```
+$ ./dump_wav.py --readmarkers --readmarkerlabels foo_markers_with_labels.wav 
+rate: 48000
+data: [[-1163428356 -1163428356]
+ [-1160849802 -1160849802]
+ [-1163488452 -1163488452]
+ ..., 
+ [-1157592630 -1157592630]
+ [-1157157550 -1157157550]
+ [-1157126800 -1157126800]]
+bits: 32
+markers: [241056, 406352, 674958, 1246607, 1728721, 2128186, 2598361, 2710252, 2829913, 3330315]
+markerlabels: [b'joe', b'tambo', b'blue', b'play', b'tj', b'drums', b'liked', b'basically', b'so later', b'all the time']
+```
+
+
+Here's a wav file made from a marker file that didn't have label strings in it.
+
+```
+$ ./dump_wav.py --readmarkers --readmarkerlabels foo_markers_no_labels.wav 
+rate: 48000
+data: [[-1163428356 -1163428356]
+ [-1160849802 -1160849802]
+ [-1163488452 -1163488452]
+ ..., 
+ [-1157592630 -1157592630]
+ [-1157157550 -1157157550]
+ [-1157126800 -1157126800]]
+bits: 32
+markers: [241056, 406352, 674958, 1246607, 1728721, 2128186, 2598361, 2710252, 2829913, 3330315]
+markerlabels: [b'', b'', b'', b'', b'', b'', b'', b'', b'', b'']
+```
+
+
 
 ## Current limitations
 
